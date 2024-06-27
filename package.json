@@ -1,0 +1,15 @@
+{
+  "name": "spotify-browser-app",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Leung",
+  "license": "ISC",
+  "description": "",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
