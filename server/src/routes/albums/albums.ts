@@ -7,12 +7,12 @@ const router = Router();
 const tokenAuth = new TokenAuth();
 
 router
-  .route("/:id")
+  .route("/")
   .get(async (req, res) => {
     try {
       const token: Token = await tokenAuth.getJson();
       const response: AxiosResponse = await axios.get(
-        `${process.env.API_URL}/albums/${req.params.id}`,
+        `${process.env.API_URL}/albums/${req.query.id}`,
         {
           headers: {
             Authorization: `${token.token_type} ${token.access_token}`
