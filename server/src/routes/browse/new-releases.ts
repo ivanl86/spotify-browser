@@ -10,7 +10,6 @@ router
   .route("/")
   .get(async (req, res) => {
     try {
-      console.log("Getting new releases!");
       const token: Token = await tokenAuth.getJson();
       const response: AxiosResponse = await axios.get(
         `${process.env.API_URL}/browse/new-releases?offset=${req.query.offset}&limit=${req.query.limit}`,
