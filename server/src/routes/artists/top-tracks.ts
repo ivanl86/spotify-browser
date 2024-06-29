@@ -2,12 +2,9 @@ import { Router } from 'express';
 import axios, { AxiosResponse } from 'axios';
 import TokenAuth from '../../services/token-auth';
 import Token from '../../model/token';
-import topTracksRoute from './top-tracks';
 
 const router = Router();
 const tokenAuth = new TokenAuth();
-
-router.use('/top-tracks', topTracksRoute);
 
 router
   .route("/")
@@ -15,7 +12,7 @@ router
     try {
       const token: Token = await tokenAuth.getJson();
       const response: AxiosResponse = await axios.get(
-        `${process.env.API_URL}/artists/${req.query.id}`,
+        `${process.env.API_URL}/artists/${req.query.id}/top-tracks`,
         {
           headers: {
             Authorization: `${token.token_type} ${token.access_token}`
@@ -28,4 +25,4 @@ router
     }
   });
 
-export default router;
+  export default router;
