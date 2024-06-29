@@ -2,9 +2,12 @@ import { Router } from 'express';
 import axios, { AxiosResponse } from 'axios';
 import TokenAuth from '../../services/token-auth';
 import Token from '../../model/token';
+import topTracksRoute from './top-tracks';
 
 const router = Router();
 const tokenAuth = new TokenAuth();
+
+router.use('/top-tracks', topTracksRoute);
 
 router
   .route("/")
