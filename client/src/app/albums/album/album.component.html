@@ -1,0 +1,16 @@
+<img *ngIf="images && images.length > 0" [src]="images | imageSize: 'large'" [alt]="name">
+<h3>{{ name }}</h3>
+<div>{{ type | capitalize }}</div>
+<div>{{ releaseDate }}</div>
+<ul *ngIf="artists && artists.length > 0">
+  <li *ngFor="let artist of artists" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+    {{ artist.name }}
+  </li>
+</ul>
+<ul *ngIf="tracks && tracks.length > 0">
+  <li *ngFor="let track of tracks">
+    <div>{{ track.track_number }}</div>
+    <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
+    <div>{{ track.duration_ms | durationFormat: "mm:ss" }}</div>
+  </li>
+</ul>

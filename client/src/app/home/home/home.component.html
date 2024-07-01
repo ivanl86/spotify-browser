@@ -1,0 +1,12 @@
+<h1>{{ title }}</h1>
+<!-- <button routerLink="/albums/album" routerLinkActive="active">Album</button> -->
+<ul *ngIf="albums && albums.length > 0">
+  <li *ngFor="let album of albums">
+    <img
+      [src]="album.images | imageSize: 'large'" alt="{{ album.name }}"
+      routerLink="/albums/album" routerLinkActive="active"
+      [queryParams]="{ id: album.id }"
+    >
+    <h3 routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">{{ album.name }}</h3>
+  </li>
+</ul>

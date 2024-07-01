@@ -1,0 +1,10 @@
+<img *ngIf="images && images.length > 0" [src]="images | imageSize: 'medium'" [alt]="album?.name">
+<h1>{{ name }}</h1>
+<div>{{ duration | durationFormat: "mm:ss" }}</div>
+<div>{{ album?.release_date | dateFormat: "y" }}</div>
+<ul *ngIf="artists && artists.length > 0">
+  <li *ngFor="let artist of artists">
+    <div routerLink="/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">{{ artist.name }}</div>
+  </li>
+</ul>
+<div routerLink="/album" routerLinkActive="active" [queryParams]="{ id: album?.id }">{{ album?.name }}</div>

@@ -1,0 +1,32 @@
+<p>search-result works!</p>
+<h1>Your results</h1>
+
+<h2>Artists</h2>
+<ul>
+  <li *ngFor="let artist of artists">
+    <div routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">{{ artist.name }}</div>
+  </li>
+  <li>
+    <div></div>
+  </li>
+</ul>
+
+<h2>Albums</h2>
+<ul>
+  <li *ngFor="let album of albums">
+    <div routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">{{ album.name }}</div>
+  </li>
+  <li>
+    <div></div>
+  </li>
+</ul>
+
+<h2>Tracks</h2>
+<ul>
+  <li *ngFor="let track of tracks">
+    <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
+  </li>
+  <li>
+    <div></div>
+  </li>
+</ul>
