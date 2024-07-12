@@ -1,12 +1,20 @@
-<h1>{{ title }}</h1>
-<!-- <button routerLink="/albums/album" routerLinkActive="active">Album</button> -->
-<ul *ngIf="albums && albums.length > 0">
-  <li *ngFor="let album of albums">
-    <img
-      [src]="album.images | imageSize: 'large'" alt="{{ album.name }}"
-      routerLink="/albums/album" routerLinkActive="active"
-      [queryParams]="{ id: album.id }"
-    >
-    <h3 routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">{{ album.name }}</h3>
-  </li>
-</ul>
+<article>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <section>
+    <ul *ngIf="albums && albums.length > 0">
+      <li *ngFor="let album of albums; let i = index">
+        <img
+          [src]="album.images | imageSize: 'medium'" alt="{{ album.name }}"
+          routerLink="/albums/album" routerLinkActive="active"
+          [queryParams]="{ id: album.id }"
+        >
+        <h2 routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">
+          {{ album.name }}
+        </h2>
+        <p  routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">{{ getArtistNames(i).join(", ") }}</p>
+      </li>
+    </ul>
+  </section>
+</article>
