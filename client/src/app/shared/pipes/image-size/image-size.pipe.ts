@@ -15,13 +15,13 @@ export class ImageSizePipe implements PipeTransform {
     }
     let selectedImage: string | undefined = "";
     switch (size) {
-      case "large":
+      case "large": // 640
         selectedImage = images.find(image => image.height >= 500)?.url;
         break;
-      case "medium":
+      case "medium": // 300
         selectedImage = images.find(image => image.height > 200 && image.height < 500)?.url;
         break;
-      case "small":
+      case "small": // 64
         selectedImage = images.find(image => image.height <= 200)?.url;
         break;
       default:
