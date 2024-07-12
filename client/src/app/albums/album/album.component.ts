@@ -79,6 +79,10 @@ export class AlbumComponent implements OnDestroy {
     return this.album?.type;
   }
 
+  get totalTime(): number {
+    return this.tracks.map(track => track.duration_ms).reduce((sum, next) => sum += next, 0);
+  }
+
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
     this.spotifySubscription.unsubscribe();
