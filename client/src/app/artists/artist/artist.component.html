@@ -6,6 +6,6 @@
 <ul>
   <li *ngFor="let track of tracks">
     <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
-    <div>{{ track.duration_ms | durationFormat: "mm:ss" }}</div>
+    <div>{{ track.duration_ms | durationFormat: "short" }}</div>
   </li>
 </ul>

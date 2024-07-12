@@ -1,6 +1,6 @@
 <img *ngIf="images && images.length > 0" [src]="images | imageSize: 'medium'" [alt]="album?.name">
 <h1>{{ name }}</h1>
-<div>{{ duration | durationFormat: "mm:ss" }}</div>
+<div>{{ duration | durationFormat: "short" }}</div>
 <div>{{ album?.release_date | dateFormat: "y" }}</div>
 <ul *ngIf="artists && artists.length > 0">
   <li *ngFor="let artist of artists">
