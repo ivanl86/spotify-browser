@@ -5,20 +5,32 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DurationFormatPipe implements PipeTransform {
 
-  transform(ms: number, format: "ss" | "mm:ss"): string | undefined {
-
+  transform(ms: number, format: "full" | "short"): string {
     if (!ms) {
-      return undefined;
-    }
-    if (format === "ss") {
-      return Math.floor(ms / 1000).toString();
+      return "";
     }
 
-    let seconds: string = Math.floor(ms / 1000 % 60).toString();
-    const minutes: string = Math.floor(ms / 1000 / 60).toString();
-    seconds = seconds.length > 1 ? seconds : `0${seconds}`;
+    const seconds: number = Math.floor(ms / 1000 % 60);
+    const minutes: number = Math.floor(ms / 1000 / 60 % 60);
+    const hours: number = Math.floor(ms / 1000 / 60 / 60);
 
-    return format.replace("mm", minutes).replace("ss", seconds);
+    if (format === "full") {
+      return this.fullFormat({ hr: hours, min: minutes, sec: seconds });
+    } else {
+      return this.shortFormat({ min: minutes, sec: seconds });
+    }
+  }
+
+  private fullFormat(duration: { hr: number, min: number, sec: number }): string {
+    if (duration.hr > 0) {
+      return `${duration.hr} hr ${duration.min} min`;
+    } else {
+      return `${duration.min} min ${duration.sec} sec`;
+    }
+  }
+
+  private shortFormat(duration: { min: number, sec: number }): string {
+    return `${duration.min}:${duration.sec >= 10 ? duration.sec : '0' + duration.sec}`;
   }
 
 }
