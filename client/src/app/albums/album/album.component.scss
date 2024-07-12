@@ -1,0 +1,152 @@
+article {
+
+  .link {
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .album-container {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+
+    .album-cover {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .album {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px 15px;
+
+      h1 {
+        font-weight: bold;
+        padding: 0 0;
+        margin: 0 0;
+        font-size: 48px;
+      }
+
+      p, li {
+        margin: 2px 0;
+      }
+
+      .album-artists {
+        font-weight: bold;
+      }
+
+      .spotify-url {
+        display: flex;
+        align-items: center;
+
+        .spotify-icon {
+          margin-right: 10px;
+          width: 100%;
+          max-width: 24px;
+        }
+      }
+
+      .album-info {
+        display: flex;
+
+        ul {
+          display: flex;
+        }
+
+        li {
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+  }
+
+  .track-table {
+    width: 100%;
+    height: 100%;
+  }
+
+  table {
+    width: 100%;
+
+    img {
+      width: 100%;
+      max-width: 16px;
+    }
+
+    th, td {
+      padding: 5px 15px;
+    }
+
+    .tracks {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .track {
+        align-items: center;
+        display: flex;
+        width: 100%;
+        font-size: 18px;
+
+        white-space: nowrap;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+
+        .track-number {
+          text-align: right;
+          justify-content: right;
+          width: 25px;
+          max-width: 100%;
+          // flex: 0 0 auto;
+        }
+
+        .title {
+          flex: 1 0 auto;
+          text-align: left;
+          max-width: 100%;
+
+          white-space: nowrap;
+          // div {
+          //   white-space: nowrap;
+          //   text-wrap: nowrap;
+          //   text-overflow: ellipsis;
+          // }
+
+          .track-name {
+            font-weight: bold;
+          }
+
+          .artists {
+            display: flex;
+          }
+
+          .artist-name {
+            font-size: 16px;
+          }
+        }
+
+        .duration {
+          text-align: center;
+          // justify-content: center;
+          // align-items: center;
+          width: 100px;
+          max-width: 100%;
+          // padding: 5px;
+          padding-right: 20px;
+          // flex: 0 0 auto;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .album-container {
+      display: inline-block;
+    }
+  }
+
+}

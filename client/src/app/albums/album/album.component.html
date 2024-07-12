@@ -1,16 +1,63 @@
-<img *ngIf="images && images.length > 0" [src]="images | imageSize: 'large'" [alt]="name">
-<h3>{{ name }}</h3>
-<div>{{ type | capitalize }}</div>
-<div>{{ releaseDate }}</div>
-<ul *ngIf="artists && artists.length > 0">
-  <li *ngFor="let artist of artists" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
-    {{ artist.name }}
-  </li>
-</ul>
-<ul *ngIf="tracks && tracks.length > 0">
-  <li *ngFor="let track of tracks">
-    <div>{{ track.track_number }}</div>
-    <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
-    <div>{{ track.duration_ms | durationFormat: "mm:ss" }}</div>
-  </li>
-</ul>
+<article>
+  <section class="album-container">
+    <img class="album-cover link" *ngIf="images && images.length > 0" [src]="images | imageSize: 'medium'" [alt]="name">
+    <div class="album">
+      <p>{{ type | capitalize }}</p>
+      <h1>{{ name }}</h1>
+
+      <div class="album-info">
+        <ul *ngIf="artists && artists.length > 0">
+          <li class="album-artists link" *ngFor="let artist of artists; let i = index" routerLink="/artists/artist"
+            routerLinkActive="active" [queryParams]="{ id: artist.id }">
+            {{ artist.name }}<span *ngIf="i < artists.length - 1">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+          </li>
+        </ul>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p>{{ releaseDate | dateFormat: "y" }}</p>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p>{{ totalTracks }} song<span *ngIf="totalTracks > 1">s</span></p>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p>{{ totalTime | durationFormat: "full" }}</p>
+      </div>
+      <a class="spotify-url" [href]="urlToSpotify" target="_blank" rel="noopener noreferrer">
+        <img class="spotify-icon" src="../../assets/spotify.svg" alt="">
+        Listen at Spotify
+      </a>
+    </div>
+  </section>
+
+  <section class="track-table">
+    <table>
+      <thead class="tracks">
+        <tr class="track">
+          <th class="track-number">#</th>
+          <th class="title">
+            <div>Title</div>
+          </th>
+          <th class="duration"><img src="../../../assets/clock.svg" alt=""></th>
+        </tr>
+      </thead>
+      <tbody class="tracks" *ngIf="tracks && tracks.length > 0">
+        <tr class="track" *ngFor="let track of tracks">
+          <td class="track-number"><div>{{ track.track_number }}</div></td>
+
+          <td class="title">
+            <div class="track-name link" routerLink="/tracks/track" routerLinkActive="active"
+              [queryParams]="{ id: track.id }">
+              {{ track.name }}
+            </div>
+
+            <div class="artists" *ngIf="track.artists && track.artists.length > 0">
+              <p class="artist-name link" *ngFor="let artist of track.artists; let i = index"
+                routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+                {{ artist.name }}<span *ngIf="i < track.artists.length - 1">,&nbsp;</span>
+            </p>
+            </div>
+          </td>
+
+          <td class="duration">{{ track.duration_ms | durationFormat: "short" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</article>
