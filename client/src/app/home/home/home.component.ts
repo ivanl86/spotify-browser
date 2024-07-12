@@ -28,6 +28,10 @@ export class HomeComponent implements OnDestroy {
     });
   }
 
+  getArtistNames(idx: number): string[] {
+    return this.albums[idx].artists.map(artist => artist.name);
+  }
+
   ngOnDestroy(): void {
     this.spotifySubscription.unsubscribe();
   }
