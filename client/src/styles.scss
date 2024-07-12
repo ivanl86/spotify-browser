@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'normalize.css';
+@use '../src/app/shared/styles/variables' as var;
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: var.$fonts;
+}
+
+h1, h2, h3, h4, h5, h6, header, footer, article, section, a, p, div, table, thead, tbody, tr, th, td, ul, li, span {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
