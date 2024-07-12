@@ -1,4 +1,10 @@
 <nav>
-  <div routerLink="/home" routerLinkActive="active">Home</div>
-  <input type="text" placeholder="Search" (keydown.enter)="onEnter(query.value)" #query>
+  <div class="nav-items" routerLink="/home" routerLinkActive="active">
+    <img src="../../assets/home.svg" alt="home icon">
+    <p>&nbsp;Home</p>
+  </div>
+  <div class="nav-items">
+    <img src="../../assets/search.svg" alt="search icon">
+    <input type="text" placeholder="Search" (keydown.enter)="onEnter(query.value)" #query>
+  </div>
 </nav>

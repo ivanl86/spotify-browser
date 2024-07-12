@@ -1,0 +1,38 @@
+@use "../../shared/styles/variables" as var;
+
+nav {
+  background: var.$primary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: #241f31;
+  width: 100%;
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    margin: 10px 15px;
+    font-size: 20px;
+
+    & img {
+      width: auto;
+      height: auto;
+      max-width: 28px;
+      max-height: 28px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    & input {
+      border: none;
+      border-radius: 5px;
+      margin: 0px 5px;
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+}
