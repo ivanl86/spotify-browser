@@ -61,6 +61,10 @@ export class ArtistComponent implements OnDestroy {
     return this.artist?.genres ? this.artist.genres : [];
   }
 
+  get totalFollowers(): number {
+    return this.artist.followers.total;
+  }
+
   get images(): Image[] {
     return this.artist?.images ? this.artist.images : [];
   }
