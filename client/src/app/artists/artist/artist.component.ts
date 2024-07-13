@@ -65,6 +65,10 @@ export class ArtistComponent implements OnDestroy {
     return this.artist?.followers?.total;
   }
 
+  get urlToSpotify(): string {
+    return this.artist?.external_urls?.spotify;
+  }
+
   get images(): Image[] {
     return this.artist?.images ? this.artist.images : [];
   }
