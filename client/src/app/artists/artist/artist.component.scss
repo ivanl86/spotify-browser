@@ -1,0 +1,179 @@
+article {
+
+  .link {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .artist-container {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+
+    .artist-image {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .artist {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin: 10px 15px;
+
+      h1 {
+        font-weight: bold;
+        font-size: 84px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .artist-info {
+        display: flex;
+
+        ul {
+          display: flex;
+        }
+
+        p, li {
+          margin: 10px 0;
+          text-wrap: nowrap;
+        }
+      }
+
+
+      .spotify-url {
+        display: flex;
+        align-items: center;
+
+        .spotify-icon {
+          margin-right: 10px;
+          width: 100%;
+          max-width: 24px;
+        }
+      }
+    }
+  }
+
+  .track-table {
+    width: 100%;
+    height: 100%;
+
+    .table-container {
+      margin: 15px;
+
+      h2 {
+        font-size: 36px;
+      }
+
+      table {
+        width: 100%;
+        margin: 15px 0;
+
+        td {
+          margin: 5px 5px;
+        }
+
+        .tracks {
+          display: flex;
+          flex-direction: column;
+
+          .track {
+            display: flex;
+            align-items: center;
+            text-wrap: nowrap;
+
+            .track-number {
+              text-align: right;
+              width: 25px;
+              max-width: 100%;
+            }
+
+            img {
+              margin: 0 5px;
+              max-width: 64px;
+              border-radius: 5px;
+            }
+
+            .title {
+              font-weight: bold;
+              width: 100%;
+            }
+
+            .duration {
+              width: 50px;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .artist-container {
+      display: flex;
+      flex-direction: column;
+
+      .artist {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+          font-size: 64px;
+        }
+
+        .artist-info {
+          display: flex;
+          flex-direction: column;
+
+          .genre-container {
+            display: flex;
+            flex-direction: column;
+
+            li, p {
+              margin: 2px 0;
+            }
+
+            span {
+              display: none;
+            }
+          }
+        }
+
+        a {
+          margin-top: 10px;
+        }
+      }
+
+    }
+
+    .track-table {
+
+      .table-container {
+        text-align: center;
+
+        table {
+
+          .tracks {
+
+            .track {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-bottom: 20px;
+              text-wrap: wrap;
+
+              .track-number, .title, .duration {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

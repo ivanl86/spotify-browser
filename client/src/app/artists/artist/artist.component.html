@@ -1,11 +1,40 @@
-<h1>{{ name }}</h1>
-<img [src]="images | imageSize: 'large'" [alt]="name">
-<div>{{ type }}</div>
-<div>{{ genres }}</div>
-<h2>Popular Tracks</h2>
-<ul>
-  <li *ngFor="let track of tracks">
-    <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
-    <div>{{ track.duration_ms | durationFormat: "short" }}</div>
-  </li>
-</ul>
+<article>
+  <section class="artist-container">
+    <img class="artist-image" [src]="images | imageSize: 'medium'" [alt]="name">
+    <div class="artist">
+      <p>{{ type | capitalize }}</p>
+      <h1>{{ name }}</h1>
+      <div class="artist-info">
+        <ul class="genre-container" *ngIf="genres && genres.length > 0">
+          <li *ngFor="let genre of genres">
+            {{ genre | capitalize }}<span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+          </li>
+          <p>{{ totalFollowers }}&nbsp;followers</p>
+        </ul>
+      </div>
+      <a class="spotify-url" [href]="urlToSpotify">
+        <img class="spotify-icon" src="../../assets/spotify.svg" alt="">Open at Spotify
+      </a>
+    </div>
+  </section>
+
+  <section class="track-table">
+    <div class="table-container">
+      <h2>Popular Tracks</h2>
+      <table>
+        <tbody class="tracks" *ngIf="tracks && tracks.length > 0">
+          <tr class="track" *ngFor="let track of tracks; let i = index">
+            <td class="track-number">{{ i + 1 }}</td>
+            <td><img [src]="track.album.images | imageSize: 'small'" alt=""></td>
+            <td class="title link" routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">
+              {{ track.name }}
+            </td>
+            <td class="duration">
+              {{ track.duration_ms | durationFormat: "short" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>
