@@ -1,10 +1,21 @@
-<img *ngIf="images && images.length > 0" [src]="images | imageSize: 'medium'" [alt]="album?.name">
-<h1>{{ name }}</h1>
-<div>{{ duration | durationFormat: "short" }}</div>
-<div>{{ album?.release_date | dateFormat: "y" }}</div>
-<ul *ngIf="artists && artists.length > 0">
-  <li *ngFor="let artist of artists">
-    <div routerLink="/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">{{ artist.name }}</div>
-  </li>
-</ul>
-<div routerLink="/album" routerLinkActive="active" [queryParams]="{ id: album?.id }">{{ album?.name }}</div>
+<article>
+  <section class="track-container">
+    <img class="album-cover" [src]="images | imageSize: 'medium'" alt="album cover">
+    <div class="track">
+      <p>{{ type | capitalize }}</p>
+      <h1>{{ name }}</h1>
+      <div class="track-info">
+        <p class="link" routerLink="/artist" routerLinkActive="active" [queryParams]="{ id: mainArtist.id }">{{ mainArtist.name }}</p>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p class="link" routerLink="/album" routerLinkActive="active" [queryParams]="{ id: albumId }">{{ albumName }}</p>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p>{{ releaseDate | dateFormat: "y" }}</p>
+        <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        <p>{{ duration | durationFormat: "short" }}</p>
+      </div>
+      <a class="spotify-url link" [href]="urlToSpotify">
+        <img class="spotify-icon" src="../../assets/spotify.svg" alt="spotify icon">Open at Spotify
+      </a>
+    </div>
+  </section>
+</article>

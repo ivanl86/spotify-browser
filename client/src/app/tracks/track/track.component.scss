@@ -1,0 +1,100 @@
+article {
+
+  .link {
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .track-container {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+
+    .album-cover {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .track {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px 15px;
+    }
+
+    h1 {
+      font-weight: bold;
+      padding: 0 0;
+      margin: 0 0;
+      font-size: 84px;
+    }
+
+
+    .spotify-url {
+      display: flex;
+      align-items: center;
+
+      .spotify-icon {
+        margin-right: 10px;
+        max-width: 24px;
+      }
+    }
+
+    .track-info {
+      display: flex;
+
+      p, span {
+        margin: 8px 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .track-container {
+      display: flex;
+      flex-direction: column;
+
+      .track {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+          font-size: 64px;
+        }
+
+        .track-info {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            display: none;
+          }
+        }
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .track-container {
+
+      .track {
+
+        h1 {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+}
