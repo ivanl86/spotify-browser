@@ -27,7 +27,7 @@ article {
         font-weight: bold;
         padding: 0 0;
         margin: 0 0;
-        font-size: 48px;
+        font-size: 84px;
       }
 
       p, li {
@@ -44,7 +44,6 @@ article {
 
         .spotify-icon {
           margin-right: 10px;
-          width: 100%;
           max-width: 24px;
         }
       }
@@ -71,7 +70,6 @@ article {
 
   table {
     width: 100%;
-    margin: 15px;
 
     img {
       width: 100%;
@@ -132,7 +130,88 @@ article {
 
   @media screen and (max-width: 768px) {
     .album-container {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+
+      .album {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+          font-size: 64px;
+        }
+
+        .album-info {
+
+          display: flex;
+          flex-direction: column;
+
+          li, p {
+            margin: 2px 0;
+          }
+
+
+          span {
+            display: none;
+          }
+        }
+
+        a {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .track-table {
+
+      table {
+
+        .tracks {
+
+          .track {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            text-wrap: wrap;
+
+            .track-number, .title, .duration {
+              text-align: center;
+
+            }
+
+            .title {
+
+              .artists {
+                display: flex;
+                flex-direction: column;
+
+                .artist-name {
+
+                  span {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+
+    .album-container {
+
+      .album {
+
+        h1 {
+          font-size: 28px;
+        }
+      }
     }
   }
 
