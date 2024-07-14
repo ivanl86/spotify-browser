@@ -8,6 +8,7 @@ export interface Track {
   duration_ms: number;
   id: string;
   name: string;
+  external_urls: { spotify: string };
   popularity: number;
   track_number: number;
   type: string;
