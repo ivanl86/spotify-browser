@@ -40,8 +40,8 @@ export class TrackComponent implements OnDestroy {
     return this.track?.name;
   }
 
-  get album(): Album | undefined {
-    return this.track?.album ? this.track.album : undefined;
+  get album(): Album {
+    return this.track?.album;
   }
 
   get artists(): Artist[] {
@@ -54,6 +54,30 @@ export class TrackComponent implements OnDestroy {
 
   get images(): Image[] {
     return this.track?.album?.images ? this.track.album.images : [];
+  }
+
+  get type(): string {
+    return this.track?.type;
+  }
+
+  get urlToSpotify() {
+    return this.track?.external_urls?.spotify;
+  }
+
+  get albumId(): string {
+    return this.album?.id
+  }
+
+  get albumName(): string {
+    return this.album?.name;
+  }
+
+  get releaseDate(): string {
+    return this.album?.release_date
+  }
+
+  get mainArtist(): Artist {
+    return this.artists[0];
   }
 
   ngOnDestroy(): void {
