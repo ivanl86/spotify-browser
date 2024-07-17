@@ -45,6 +45,10 @@ article {
     .track-info {
       display: flex;
 
+      .artist-name {
+        font-weight: bold;
+      }
+
       p, span {
         margin: 8px 0;
       }
