@@ -45,7 +45,7 @@ export class TrackComponent implements OnDestroy {
   }
 
   get artists(): Artist[] {
-    return this.track && this.track.artists ? this.track.artists : [];
+    return this.track?.artists ? this.track.artists : [];
   }
 
   get duration(): number {
@@ -77,7 +77,7 @@ export class TrackComponent implements OnDestroy {
   }
 
   get mainArtist(): Artist {
-    return this.artists[0];
+    return this.artists[0] ? this.artists[0] : <Artist>{};
   }
 
   ngOnDestroy(): void {
