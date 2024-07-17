@@ -5,7 +5,7 @@
       <p>{{ type | capitalize }}</p>
       <h1>{{ name }}</h1>
       <div class="track-info">
-        <p class="link" routerLink="/artist" routerLinkActive="active" [queryParams]="{ id: mainArtist.id }">{{ mainArtist.name }}</p>
+        <p class="artist-name link" routerLink="/artist" routerLinkActive="active" [queryParams]="{ id: mainArtist.id }">{{ mainArtist.name }}</p>
         <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
         <p class="link" routerLink="/album" routerLinkActive="active" [queryParams]="{ id: albumId }">{{ albumName }}</p>
         <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
