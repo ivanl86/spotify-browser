@@ -2,9 +2,12 @@ import { Router } from 'express';
 import axios, { AxiosResponse } from 'axios';
 import TokenAuth from '../../services/token-auth';
 import Token from '../../model/token';
+import recommendationsRoute from './recommendations';
 
 const router = Router();
 const tokenAuth = new TokenAuth();
+
+router.use('/recommendations', recommendationsRoute);
 
 router
   .route("/")
