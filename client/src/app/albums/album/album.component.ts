@@ -52,15 +52,15 @@ export class AlbumComponent implements OnDestroy {
   }
 
   get artists(): Artist[] {
-    return this.album?.artists ? this.album.artists : [];
+    return this.album?.artists ?? [];
   }
 
   get images(): Image[] {
-    return this.album?.images ? this.album.images : [];
+    return this.album?.images ?? [];
   }
 
   get tracks(): Track[] {
-    return this.album?.tracks?.items ? this.album.tracks.items :  [];
+    return this.album?.tracks?.items ?? [];
   }
 
   get releaseDate(): string {
