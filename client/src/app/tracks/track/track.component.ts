@@ -6,6 +6,7 @@ import { Track } from '../../models/track.interface';
 import { Artist } from '../../models/artist.interface';
 import { Album } from '../../models/album.interface';
 import { Image } from '../../models/image.interface';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-track',
@@ -20,7 +21,11 @@ export class TrackComponent implements OnDestroy {
 
   track: Track = <Track>{ };
 
-  constructor(private activatedRoute: ActivatedRoute, private spotifyService: SpotifyService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private spotifyService: SpotifyService,
+    private titleService: Title
+  ) {
     this.routeSubscription = this.activatedRoute.queryParamMap.subscribe(
       params => {
         const id: string | null = params.get("id");
@@ -33,6 +38,7 @@ export class TrackComponent implements OnDestroy {
       .getTrack(this.id)
       .subscribe(response => {
         this.track = response;
+        this.titleService.setTitle(this.name);
       });
   }
 
