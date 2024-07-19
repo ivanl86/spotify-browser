@@ -58,7 +58,7 @@ export class ArtistComponent implements OnDestroy {
   }
 
   get genres(): string[] {
-    return this.artist?.genres ? this.artist.genres : [];
+    return this.artist?.genres ?? [];
   }
 
   get totalFollowers(): number {
@@ -70,7 +70,7 @@ export class ArtistComponent implements OnDestroy {
   }
 
   get images(): Image[] {
-    return this.artist?.images ? this.artist.images : [];
+    return this.artist?.images ?? [];
   }
 
   ngOnDestroy(): void {
