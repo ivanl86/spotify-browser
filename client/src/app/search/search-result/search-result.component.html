@@ -1,32 +1,102 @@
-<p>search-result works!</p>
-<h1>Your results</h1>
+<article>
+  <header>
+    <h1>Your search results</h1>
+  </header>
 
-<h2>Artists</h2>
-<ul>
-  <li *ngFor="let artist of artists">
-    <div routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">{{ artist.name }}</div>
-  </li>
-  <li>
-    <div></div>
-  </li>
-</ul>
+  <section>
+    <h2>Tracks</h2>
+    <div class="track-tables-container">
+      <table class="left-table">
+        <tbody class="tracks">
+          <tr class="track" *ngFor="let track of tracks.slice(0, tracksMidIndex)">
+            <td class="album-cover"><img [src]="track.album.images | imageSize: 'small'" alt="album cover"></td>
+            <td class="title">
+              <div class="track-name link" routerLink="/tracks/track" routerLinkActive="active"
+                [queryParams]="{ id: track.id }">
+                {{ track.name }}
+              </div>
+              <div class="artists">
+                <p class="artist-name link" *ngFor="let artist of track.artists; let i = index"
+                  routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+                  {{ artist.name }}<span *ngIf="i < track.artists.length - 1">,&nbsp;</span>
+                </p>
+              </div>
+            </td>
+            <td class="duration">{{ track.duration_ms | durationFormat: "short" }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-<h2>Albums</h2>
-<ul>
-  <li *ngFor="let album of albums">
-    <div routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">{{ album.name }}</div>
-  </li>
-  <li>
-    <div></div>
-  </li>
-</ul>
+      <table class="right-table">
+        <tbody class="tracks">
+          <tr class="track" *ngFor="let track of tracks.slice(tracksMidIndex)">
+            <td class="album-cover"><img [src]="track.album.images | imageSize: 'small'" alt="album cover"></td>
+            <td class="title">
+              <div class="track-name link" routerLink="/tracks/track" routerLinkActive="active"
+                [queryParams]="{ id: track.id }">
+                {{ track.name }}
+              </div>
+              <div class="artists">
+                <p class="artist-name link" *ngFor="let artist of track.artists; let i = index"
+                  routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+                  {{ artist.name }}<span *ngIf="i < track.artists.length - 1">,&nbsp;</span>
+                </p>
+              </div>
+            </td>
+            <td class="duration">{{ track.duration_ms | durationFormat: "short" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-<h2>Tracks</h2>
-<ul>
-  <li *ngFor="let track of tracks">
-    <div routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">{{ track.name }}</div>
-  </li>
-  <li>
-    <div></div>
-  </li>
-</ul>
+  <section>
+    <h2>Artist</h2>
+    <div class="artist-container">
+      <table class="artist-table">
+        <tbody class="artists">
+          <tr class="artist" *ngFor="let artist of artists">
+            <td class="link" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+              <img [src]="artist.images | imageSize: 'medium'" alt="artist image">
+            </td>
+            <td class="artist-name link" routerLink="/artists/artist" routerLinkActive="active"
+              [queryParams]="{ id: artist.id }">
+              {{ artist.name }}
+            </td>
+            <td>
+              {{ artist.type | capitalize }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Albums</h2>
+    <div class="album-container">
+      <table class="album-table">
+        <tbody class="albums">
+          <tr class="album" *ngFor="let album of albums">
+            <td class="link" routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">
+              <img [src]="album.images | imageSize: 'medium'" alt="album cover">
+            </td>
+            <td class="title link" routerLink="/albums/album" routerLinkActive="active"
+              [queryParams]="{ id: album.id }">
+              {{ album.name }}
+            </td>
+            <td class="album-info">
+              <p class="date">{{ album.release_date | dateFormat: "y" }}<span>&nbsp;&bull;&nbsp;</span></p>
+              <div class="artists">
+                <p class="artist-name link" *ngFor="let artist of album.artists; let i = index"
+                  routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: artist.id }">
+                  {{ artist.name }}<span *ngIf="i < album.artists.length - 1">,&nbsp;</span>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>

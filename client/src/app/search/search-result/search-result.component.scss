@@ -1,0 +1,326 @@
+article {
+  .link {
+    cursor: pointer;
+  }
+
+  header {
+    max-width: 100%;
+    font-weight: bold;
+    margin: 15px;
+
+    h1 {
+      font-size: 64px;
+    }
+  }
+
+  h2 {
+    max-width: 100%;
+    font-size: 48px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    .track-tables-container {
+      display: flex;
+      width: 100%;
+
+      table {
+        width: 50%;
+
+        th,
+        td {
+          margin: 5px 10px;
+        }
+
+        img {
+          border-radius: 8px;
+        }
+
+        p,
+        li,
+        span {
+          margin: 2px 0;
+        }
+
+        .tracks {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          .track {
+            align-items: center;
+            display: flex;
+            width: 100%;
+
+            .album-cover {
+              max-width: 100%;
+            }
+
+            .title {
+              width: 100%;
+              text-align: left;
+
+              .track-name {
+                font-weight: bold;
+              }
+
+              .artists {
+                display: flex;
+              }
+            }
+
+            .duration {
+              max-width: 100%;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    .artist-container {
+      .artists {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .artist {
+          display: flex;
+          flex-direction: column;
+          margin: 10px;
+          text-align: center;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            // width: 240px;
+            // height: 240px;
+            // border-radius: 120px;
+          }
+
+          .artist-name {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .album-container {
+      table {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      .albums {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .album {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          width: 320px;
+
+          p,
+          span {
+            margin: 2px 0;
+          }
+
+          img {
+            border-radius: 8px;
+          }
+
+          .title {
+            font-weight: bold;
+          }
+
+          .album-info {
+            display: flex;
+
+            .artists {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .track-tables-container {
+
+      .left-table {
+        margin-right: 50px;
+      }
+    }
+    .album-container {
+
+      .albums {
+
+        .album {
+
+          .title {
+            white-space: nowrap; // Prevents text from wrapping to the next line
+            overflow: hidden; // Hides the overflow text
+            text-overflow: ellipsis; // Adds an ellipsis (...) to indicate truncated text
+          }
+        }
+      }
+    }
+
+    .artist-container {
+
+      .artists {
+
+        .artist {
+
+          img {
+            width: 240px;
+            height: 240px;
+            border-radius: 120px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    header {
+
+      h1 {
+        font-size: 48px;
+      }
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    .track-tables-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .left-table {
+        margin-right: 0;
+      }
+
+      table {
+        width: 100%;
+
+        .tracks {
+
+          .track {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+
+              .track-name {
+                text-align: center;
+              }
+
+              .artists {
+                display: flex;
+                flex-direction: column;
+
+                .artist-name {
+                  text-align: center;
+
+                  span {
+                    display: none;
+                  }
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .artist-container {
+
+      .artists {
+
+        .artist {
+
+          img {
+            width: 180px;
+            height: 180px;
+            border-radius: 90px;
+          }
+        }
+      }
+    }
+
+    .album-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      table {
+        width: 100%;
+      }
+
+      .albums {
+        width: 100%;
+
+        .album {
+          width: 100%;
+          height: 100%;
+          font-size: 16px;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          .title {
+            border: solid;
+            text-wrap: wrap;
+            // white-space: normal; //* Allows text to wrap on smaller screens
+            // overflow: visible; // Ensures all text is shown
+            // text-overflow: clip; // Prevents ellipsis from being added
+          }
+
+          .album-info {
+            display: flex;
+            flex-direction: column;
+
+            span {
+              display: none;
+            }
+
+            .artists {
+              display: flex;
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .artist-container {
+
+      .artists {
+
+        .artist {
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+          }
+        }
+      }
+    }
+  }
+
+}
