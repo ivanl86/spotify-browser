@@ -4,12 +4,14 @@ import TokenAuth from '../../services/token-auth';
 import Token from '../../model/token';
 import topTracksRoute from './top-tracks';
 import artistAlbumsRoute from './artist-albums';
+import relatedAritstsRoute from './related-artists';
 
 const router = Router();
 const tokenAuth = new TokenAuth();
 
 router.use('/top-tracks', topTracksRoute);
 router.use('/artist-albums', artistAlbumsRoute);
+router.use('/related-artists', relatedAritstsRoute);
 
 router
   .route("/")
