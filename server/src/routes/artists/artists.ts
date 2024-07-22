@@ -3,11 +3,13 @@ import axios, { AxiosResponse } from 'axios';
 import TokenAuth from '../../services/token-auth';
 import Token from '../../model/token';
 import topTracksRoute from './top-tracks';
+import artistAlbumsRoute from './artist-albums';
 
 const router = Router();
 const tokenAuth = new TokenAuth();
 
 router.use('/top-tracks', topTracksRoute);
+router.use('/artist-albums', artistAlbumsRoute);
 
 router
   .route("/")
@@ -19,7 +21,7 @@ router
         {
           headers: {
             Authorization: `${token.token_type} ${token.access_token}`
-          }
+          },
         }
       );
       res.json(response.data);
