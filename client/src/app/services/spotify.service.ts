@@ -58,6 +58,25 @@ export class SpotifyService {
     );
   }
 
+  /**
+   * getRecommendations
+   */
+  public getRecommendations(
+    artistSeeds: string,
+    trackSeeds: string,
+    limit: number = 20
+  ): Observable<{ tracks: Track[] }> {
+    return this.http.get<{ tracks: Track[] }>(
+      `${this.baseUrl}/tracks/recommendations`, {
+        params: {
+          artistSeeds: artistSeeds,
+          trackSeeds: trackSeeds,
+          limit: limit.toString()
+        }
+      }
+    );
+  }
+
   public search(
     query: string,
     type: string = "album",
