@@ -98,6 +98,10 @@ export class TrackComponent implements OnDestroy {
     return this.artists[0] ?? <Artist>{};
   }
 
+  get relatedTracks(): Track[] {
+    return this.related?.tracks ?? [];
+  }
+
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
   }
