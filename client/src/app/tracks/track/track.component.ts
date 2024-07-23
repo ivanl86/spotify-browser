@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { SpotifyService } from '../../services/spotify.service';
 import { Track } from '../../models/track.interface';
 import { Artist } from '../../models/artist.interface';
@@ -16,29 +16,41 @@ import { Title } from '@angular/platform-browser';
 export class TrackComponent implements OnDestroy {
 
   private routeSubscription: Subscription;
-  private spotifySubscription: Subscription;
   private id: string = "";
 
-  track: Track = <Track>{ };
+  track: Track = <Track>{};
+  related: { tracks: Track[] } = { tracks: [] };
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private spotifyService: SpotifyService,
     private titleService: Title
   ) {
-    this.routeSubscription = this.activatedRoute.queryParamMap.subscribe(
-      params => {
-        const id: string | null = params.get("id");
-        if (id) {
-          this.id = id;
-        }
-      });
 
-    this.spotifySubscription = this.spotifyService
-      .getTrack(this.id)
-      .subscribe(response => {
-        this.track = response;
-        this.titleService.setTitle(this.name);
+    this.routeSubscription = this.activatedRoute.queryParamMap
+      .pipe(
+        switchMap(params => {
+          const id: string | null = params.get("id");
+          if (id) {
+            this.id = id;
+            this.titleService.setTitle(this.name);
+            return this.spotifyService.getTrack(this.id);
+          } else {
+            return [];
+          }
+        }),
+        switchMap(track => {
+          this.track = track;
+          return this.spotifyService.getRecommendations(this.mainArtist.id, this.id);
+        })
+      )
+      .subscribe({
+        next: recommendations => {
+          this.related = recommendations;
+        },
+        error: error => {
+          console.log(error);
+        }
       });
   }
 
@@ -87,7 +99,6 @@ export class TrackComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.spotifySubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
   }
 }
