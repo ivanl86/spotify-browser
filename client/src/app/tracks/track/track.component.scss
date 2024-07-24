@@ -10,7 +10,7 @@ article {
   .track-container {
     display: flex;
     flex-direction: row;
-    margin: 15px;
+    padding: 15px;
 
     .album-cover {
       max-width: 100%;
@@ -51,6 +51,58 @@ article {
 
       p, span {
         margin: 8px 0;
+      }
+    }
+
+  }
+
+  .related-container {
+    padding: 15px;
+    width: 100%;
+
+    h2 {
+      font-size: 48px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .track-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      tr {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+
+        td {
+          margin: 5px 10px;
+        }
+
+        .cover {
+          text-align: center;
+
+          border-radius: 8px;
+        }
+
+        .names {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          text-align: left;
+
+          .track-name {
+            font-weight: bold;
+          }
+        }
+
+        .duration {
+          text-align: center;
+        }
       }
     }
   }
@@ -96,6 +148,26 @@ article {
 
         h1 {
           font-size: 28px;
+        }
+      }
+    }
+
+    .related-container {
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .track-list {
+
+        tr {
+          display: flex;
+          flex-direction: column;
+          padding: 8px;
+
+          .names {
+            align-items: center;
+          }
         }
       }
     }
