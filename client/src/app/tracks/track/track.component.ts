@@ -33,7 +33,6 @@ export class TrackComponent implements OnDestroy {
           const id: string | null = params.get("id");
           if (id) {
             this.id = id;
-            this.titleService.setTitle(this.name);
             return this.spotifyService.getTrack(this.id);
           } else {
             return [];
@@ -41,6 +40,7 @@ export class TrackComponent implements OnDestroy {
         }),
         switchMap(track => {
           this.track = track;
+          this.titleService.setTitle(this.name);
           return this.spotifyService.getRecommendations(this.mainArtist.id, this.id);
         })
       )
