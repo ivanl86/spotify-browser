@@ -77,6 +77,25 @@ export class SpotifyService {
     );
   }
 
+  /**
+   * getArtistAlbums
+   */
+  public getArtistAlbums(
+    id: string,
+    limit: number = 10,
+    offset: number = 0
+  ): Observable<{ items: Album[]}> {
+    return this.http.get<{ items: Album[]}>(
+      `${this.baseUrl}/artists/artist-albums`, {
+        params: {
+          id: id,
+          limit: limit,
+          offset: offset
+        }
+      }
+    );
+  }
+
   public search(
     query: string,
     type: string = "album",
