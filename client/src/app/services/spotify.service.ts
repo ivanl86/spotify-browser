@@ -96,6 +96,19 @@ export class SpotifyService {
     );
   }
 
+  /**
+   * getRelatedArtists
+   */
+  public getRelatedArtists(id: string): Observable<{ artists: Artist[] }> {
+    return this.http.get<{ artists: Artist[] }>(
+      `${this.baseUrl}/artists/related-artists`, {
+        params: {
+          id: id
+        }
+      }
+    );
+  }
+
   public search(
     query: string,
     type: string = "album",
