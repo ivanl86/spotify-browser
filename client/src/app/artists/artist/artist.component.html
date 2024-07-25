@@ -23,7 +23,7 @@
       <h2>Popular Tracks</h2>
       <table>
         <tbody class="tracks" *ngIf="tracks && tracks.length > 0">
-          <tr class="track" *ngFor="let track of tracks; let i = index">
+          <tr class="track" *ngFor="let track of tracks.slice(0, 5); let i = index">
             <td class="track-number">{{ i + 1 }}</td>
             <td><img [src]="track.album.images | imageSize: 'small'" alt=""></td>
             <td class="title link" routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">
@@ -32,6 +32,40 @@
             <td class="duration">
               {{ track.duration_ms | durationFormat: "short" }}
             </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="album-list">
+    <div class="album-container">
+      <h2>More by {{ name }}</h2>
+      <table>
+        <tbody class="albums" *ngIf="albums && albums.length > 0">
+          <tr class="album" *ngFor="let album of albums">
+            <td class="album-cover"><img [src]="album.images | imageSize: 'medium'" alt="album cover"></td>
+            <td class="album-title link" routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">
+              {{ album.name }}
+            </td>
+            <td>{{ album.release_date | dateFormat: "y" }}&nbsp;&bull;&nbsp;{{ album.album_type | capitalize }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="artist-list">
+    <div class="artists-container">
+      <h2>Artists you may like</h2>
+      <table>
+        <tbody class="artists" *ngIf="relatedArtists && relatedArtists.length  > 0">
+          <tr class="artist"*ngFor="let relatedArtist of relatedArtists">
+            <td class="artist-image"><img [src]="relatedArtist.images | imageSize: 'medium'" alt="artist image"></td>
+            <td class="artist-name link" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: relatedArtist.id }">
+              {{ relatedArtist.name }}
+            </td>
+            <td class="type">{{ relatedArtist.type | capitalize }}</td>
           </tr>
         </tbody>
       </table>
