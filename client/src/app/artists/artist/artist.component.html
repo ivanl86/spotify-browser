@@ -25,7 +25,9 @@
         <tbody class="tracks" *ngIf="tracks && tracks.length > 0">
           <tr class="track" *ngFor="let track of tracks.slice(0, 5); let i = index">
             <td class="track-number">{{ i + 1 }}</td>
-            <td><img [src]="track.album.images | imageSize: 'small'" alt=""></td>
+            <td class="link" routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">
+              <img [src]="track.album.images | imageSize: 'small'" alt="">
+            </td>
             <td class="title link" routerLink="/tracks/track" routerLinkActive="active" [queryParams]="{ id: track.id }">
               {{ track.name }}
             </td>
@@ -44,7 +46,9 @@
       <table>
         <tbody class="albums" *ngIf="albums && albums.length > 0">
           <tr class="album" *ngFor="let album of albums">
-            <td class="album-cover"><img [src]="album.images | imageSize: 'medium'" alt="album cover"></td>
+            <td class="album-cover link" routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">
+              <img [src]="album.images | imageSize: 'medium'" alt="album cover">
+            </td>
             <td class="album-title link" routerLink="/albums/album" routerLinkActive="active" [queryParams]="{ id: album.id }">
               {{ album.name }}
             </td>
@@ -61,7 +65,9 @@
       <table>
         <tbody class="artists" *ngIf="relatedArtists && relatedArtists.length  > 0">
           <tr class="artist"*ngFor="let relatedArtist of relatedArtists">
-            <td class="artist-image"><img [src]="relatedArtist.images | imageSize: 'medium'" alt="artist image"></td>
+            <td class="artist-image link" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: relatedArtist.id }">
+              <img [src]="relatedArtist.images | imageSize: 'medium'" alt="artist image">
+            </td>
             <td class="artist-name link" routerLink="/artists/artist" routerLinkActive="active" [queryParams]="{ id: relatedArtist.id }">
               {{ relatedArtist.name }}
             </td>
