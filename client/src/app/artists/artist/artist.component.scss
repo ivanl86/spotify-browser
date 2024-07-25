@@ -1,5 +1,4 @@
 article {
-
   .link {
     &:hover {
       cursor: pointer;
@@ -36,11 +35,12 @@ article {
           display: flex;
         }
 
-        p, li, span {
+        p,
+        li,
+        span {
           margin: 10px 0;
         }
       }
-
 
       .spotify-url {
         display: flex;
@@ -64,6 +64,7 @@ article {
 
       h2 {
         font-size: 36px;
+        text-wrap: wrap;
       }
 
       table {
@@ -110,6 +111,114 @@ article {
     }
   }
 
+  .album-list {
+    width: 100%;
+
+    .album-container {
+      width: 100%;
+      padding: 15px;
+
+      h2 {
+        font-size: 36px;
+      }
+
+      table {
+        width: 100%;
+
+        tr {
+          margin: 8px;
+        }
+
+        .albums {
+          display: flex;
+          flex-wrap: wrap;
+
+          .album {
+            display: flex;
+            flex-direction: column;
+
+            td {
+              margin: 1px 0;
+            }
+
+            img {
+              border-radius: 10px;
+            }
+
+            .album-title {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .artist-list {
+    width: 100%;
+
+    .artists-container {
+      width: 100%;
+      padding: 15px;
+
+      h2 {
+        font-size: 36px;
+      }
+
+      table {
+        tr {
+          margin: 8px;
+        }
+
+        .artists {
+          display: flex;
+          flex-wrap: wrap;
+
+          .artist {
+            display: flex;
+            flex-direction: column;
+
+            td {
+              margin: 1px 0;
+            }
+
+            img {
+              border-radius: 10px;
+            }
+
+            .artist-name {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .album-list {
+      .album-container {
+        table {
+          .albums {
+            .album {
+              td {
+                width: 160px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              img {
+                width: 160px;
+                height: 160px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .artist-container {
       display: flex;
@@ -132,7 +241,8 @@ article {
             display: flex;
             flex-direction: column;
 
-            li, p {
+            li,
+            p {
               margin: 2px 0;
             }
 
@@ -146,18 +256,14 @@ article {
           margin-top: 10px;
         }
       }
-
     }
 
     .track-table {
-
       .table-container {
         text-align: center;
 
         table {
-
           .tracks {
-
             .track {
               display: flex;
               flex-direction: column;
@@ -165,8 +271,46 @@ article {
               margin-bottom: 20px;
               text-wrap: wrap;
 
-              .track-number, .title, .duration {
+              .track-number,
+              .title,
+              .duration {
                 text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .album-list {
+      .album-container {
+        table {
+          .albums {
+            .album {
+              td {
+                width: 100%;
+              }
+
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .artist-list {
+      .artists-container {
+        table {
+          .artists {
+            .artist {
+              td {
+                width: 100%;
+              }
+
+              img {
+                width: 100%;
               }
             }
           }
@@ -175,4 +319,29 @@ article {
     }
   }
 
+  @media screen and (max-width: 480px) {
+    .artist-container {
+      .artist {
+        h1 {
+          font-size: 48px;
+        }
+      }
+    }
+
+    .album-list {
+      .album-container {
+        h2 {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .artist-list {
+      .artists-container {
+        h2 {
+          font-size: 24px;
+        }
+      }
+    }
+  }
 }
